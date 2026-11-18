@@ -44,7 +44,7 @@ export function init_lang() {
             let map = api.language.map(lang);
             let scr = DOC.createElement('script');
             // scr.setAttribute('defer',true);
-            scr.setAttribute('src',`/kiri/lang/${map}.js`);
+            scr.setAttribute("src", `lang/${map}.js`);
             (DOC.body || DOC.head).appendChild(scr);
             stats.set('ll',lang);
             scr.onload = function() {

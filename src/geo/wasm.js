@@ -152,7 +152,7 @@ export function enable() {
         return;
     }
     base._wasm = 'loading';
-    fetch('/wasm/kiri-geo.wasm')
+    fetch('../wasm/kiri-geo.wasm') // relative: page kiri/ or worker lib/kiri/run/, as csg.js
         .then(response => response.arrayBuffer())
         .then(bytes => WebAssembly.instantiate(bytes, {
             env: {

@@ -68,7 +68,7 @@ function checkSeed(then) {
             if (SETUP.debug) {
                 return then();
             }
-            platform.load_stl("/obj/cube.stl", function(vert) {
+            platform.load_stl("../obj/cube.stl", function(vert) {
                 catalog.putFile("sample cube.stl", vert);
                 platform.update_bounds();
                 space.view.home();
