@@ -11,6 +11,7 @@ import { init_lang } from '../kiri/app/init/lang.js';
 import { init_input } from '../kiri/app/init/input.js';
 import { init_sync } from '../kiri/app/init/sync.js';
 import { surfaces } from '../kiri/app/init/build.js';
+import { setupFeatures, applyDefaults } from '../kiri/app/edu.js';
 
 let traceload = location.search.indexOf('traceload') > 0;
 let load = [];
@@ -35,11 +36,13 @@ async function checkReady() {
         kiri.api = api;
         self.$ = api.web.$;
         {
+            setupFeatures();
             api.client.start();
             await init_lang();
             surfaces.build();
             await init_input();
             await init_sync();
+            applyDefaults();
         }
         for (let [fn, name] of load) {
             safeExec(fn, name);

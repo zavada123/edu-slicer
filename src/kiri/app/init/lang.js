@@ -33,18 +33,21 @@ function lang_rewrite() {
 }
 
 // init lang must happen before all other init functions
+const DEFAULT_LANG = 'uk';
+
 export function init_lang() {
     return new Promise(resolve => {
         // if a language needs to load, the script is injected and loaded
         // first.  once this loads, or doesn't, the initialization begins
-        let lang = SETUP.ln ? SETUP.ln[0] : sdb.getItem('kiri-lang') || api.language.get();
+        // EduProstir: Ukrainian unless the student picked another language in the menu (or ?ln:xx)
+        let lang = SETUP.ln ? SETUP.ln[0] : sdb.getItem('kiri-lang') || DEFAULT_LANG;
         api.event.emit('init.lang', lang);
         // inject language script if not english
         if (lang && lang !== 'en' && lang !== 'en-us') {
             let map = api.language.map(lang);
             let scr = DOC.createElement('script');
             // scr.setAttribute('defer',true);
-            scr.setAttribute('src',`/kiri/lang/${map}.js`);
+            scr.setAttribute("src", `lang/${map}.js`);
             (DOC.body || DOC.head).appendChild(scr);
             stats.set('ll',lang);
             scr.onload = function() {

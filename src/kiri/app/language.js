@@ -32,6 +32,7 @@ LANG.map = function(key) {
         case 'pl': return 'pl-pl';
         case 'pt': return 'pt-pt';
         case 'zh': return 'zh';
+        case 'uk': return 'uk';
     }
     return KDFL;
 };

@@ -46,7 +46,7 @@ export function ensureSLAMemory(required) {
 async function sla_prepare(widgets, settings, update) {
     self.kiri_worker.current.print = newPrint(settings, widgets);
     if (!SLA.wasm) {
-        SLA.wasmPromise = SLA.wasmPromise || fetch('/wasm/kiri-sla.wasm')
+        SLA.wasmPromise = SLA.wasmPromise || fetch('../wasm/kiri-sla.wasm')
             .then(response => response.arrayBuffer())
             .then(bytes => WebAssembly.instantiate(bytes, {
                 env: {

@@ -68,7 +68,7 @@ function checkSeed(then) {
             if (SETUP.debug) {
                 return then();
             }
-            platform.load_stl("/obj/cube.stl", function(vert) {
+            platform.load_stl("../obj/cube.stl", function(vert) {
                 catalog.putFile("sample cube.stl", vert);
                 platform.update_bounds();
                 space.view.home();
@@ -327,9 +327,9 @@ export function init_input() {
 
         prefadd:          uc.checkpoint($('prefs-add')),
 
-        _____:            newGroup('Machine Profile', $('all-devpro'), { driven, hideable, separator, group: "devpro" }),
-        modeDevice:       newSelect('machine', {title: 'device', class: "tiny"}, "_"),
-        modeProfile:      newSelect('profile', {title: 'profile', class: "tiny"}, "_"),
+        _____:            newGroup(LANG.dm_seld ?? 'Machine Profile', $('all-devpro'), { driven, hideable, separator, group: "devpro" }),
+        modeDevice:       newSelect(LANG.mi_devi ?? 'machine', {title: 'device', class: "tiny"}, "_"),
+        modeProfile:      newSelect(LANG.mi_prof ?? 'profile', {title: 'profile', class: "tiny"}, "_"),
 
         /** FDM Settings */
         ...menuFDM(),
@@ -446,6 +446,7 @@ export function init_input() {
         [ 'lset-pt', 'pt-pt' ],
         [ 'lset-es', 'es-es' ],
         [ 'lset-zh', 'zh' ],
+        [ 'lset-uk', 'uk' ],
     ]
     for (let [ btn, lang ] of lang_map) {
         $(btn).onclick = () => {
