@@ -22,3 +22,4 @@ tmp
 tmp_*/
 web/boot/bundle*
 dist
+__pycache__

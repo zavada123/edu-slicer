@@ -217,7 +217,8 @@ function content(actions) {
                     menuItem(actions, { children: label({ id: 'lset-es', _: 'español' }) }),
                     menuItem(actions, { children: label({ id: 'lset-fr', _: 'français' }) }),
                     menuItem(actions, { children: label({ id: 'lset-pl', class: 'nocap', _: 'polski' }) }),
-                    menuItem(actions, { children: label({ id: 'lset-pt', _: 'português' }) })
+                    menuItem(actions, { children: label({ id: 'lset-pt', _: 'português' }) }),
+                    menuItem(actions, { children: label({ id: 'lset-uk', class: 'nocap', _: 'українська' }) })
                 ]
             })
         ]),
