@@ -1,0 +1,18 @@
+/* EduProstir: what students do not need (other machine types, links to the upstream community, PWA install). */
+
+/* Mode menu (CNC, laser, SLA...): the slicer is FDM only. */
+.menu-right:has(> label[lk="mo_menu"]),
+/* Info menu: upstream help (forums, Discord) and donations. */
+.menu-right:has(> label[lk="info"]),
+/* Install as an app (service worker) and its separator. */
+#install, #uninstall,
+/* Cookie notice of grid.space: EduProstir shows its own terms. */
+#gdpr {
+    display: none !important;
+}
+
+/* Export dialog: sending to a Bambu printer over the school network and the donation link. */
+#bambu-output,
+#export-support-a {
+    display: none !important;
+}

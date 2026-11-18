@@ -15,8 +15,10 @@ const out = path.resolve(process.argv[2] || path.join(root, 'dist'));
 const FOLDERS = [
     ['lib', 'src'],
     ['obj', 'web/obj'],
-    ['fon2', 'web/fon2'],
-    ['font', 'web/font'],
+    // Font Awesome: only what index.html loads (the npm package also holds svgs, less, scss: ~20 MB)
+    ['font/css', 'web/font/css'],
+    ['font/webfonts', 'web/font/webfonts'],
+    ['font/js', 'web/font/js'],
     ['icon', 'web/icon'],
     ['kiri', 'web/kiri'],
     ['moto', 'web/moto'],

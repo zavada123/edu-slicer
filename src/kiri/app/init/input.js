@@ -327,9 +327,9 @@ export function init_input() {
 
         prefadd:          uc.checkpoint($('prefs-add')),
 
-        _____:            newGroup('Machine Profile', $('all-devpro'), { driven, hideable, separator, group: "devpro" }),
-        modeDevice:       newSelect('machine', {title: 'device', class: "tiny"}, "_"),
-        modeProfile:      newSelect('profile', {title: 'profile', class: "tiny"}, "_"),
+        _____:            newGroup(LANG.dm_seld ?? 'Machine Profile', $('all-devpro'), { driven, hideable, separator, group: "devpro" }),
+        modeDevice:       newSelect(LANG.mi_devi ?? 'machine', {title: 'device', class: "tiny"}, "_"),
+        modeProfile:      newSelect(LANG.mi_prof ?? 'profile', {title: 'profile', class: "tiny"}, "_"),
 
         /** FDM Settings */
         ...menuFDM(),

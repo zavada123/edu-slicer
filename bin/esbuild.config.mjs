@@ -6,6 +6,8 @@ import glob from 'fast-glob';
 // Get build mode from command line argument
 const mode = process.argv[2] || 'dev';
 const isProd = mode === 'prod';
+// EduProstir builds only the slicer (Kiri:Moto): --kiri skips Void:Form and Mesh:Tool.
+const kiriOnly = process.argv.includes('--kiri');
 
 console.log(`Building in ${mode} mode...`);
 
@@ -104,33 +106,35 @@ async function buildApp() {
         // Concatenate kiri devices
         generateDevices();
 
-        // Bundle void main app
-        await build(Object.assign({}, rec, {
-            entryPoints: [ 'src/main/void.js' ],
-            outfile: VOID_OUTFILE,
-        }));
+        if (!kiriOnly) {
+            // Bundle void main app
+            await build(Object.assign({}, rec, {
+                entryPoints: [ 'src/main/void.js' ],
+                outfile: VOID_OUTFILE,
+            }));
 
-        appendExtraModules(VOID_EXTRAS, VOID_OUTFILE, isProd);
+            appendExtraModules(VOID_EXTRAS, VOID_OUTFILE, isProd);
 
-        // Bundle void worker
-        await build(Object.assign({}, rec, {
-            entryPoints: [ 'src/void/worker/solids_worker.js' ],
-            outfile: 'src/pack/void-work-solid.js',
-        }));
+            // Bundle void worker
+            await build(Object.assign({}, rec, {
+                entryPoints: [ 'src/void/worker/solids_worker.js' ],
+                outfile: 'src/pack/void-work-solid.js',
+            }));
 
-        // Bundle mesh main app
-        await build(Object.assign({}, rec, {
-            entryPoints: [ 'src/main/mesh.js' ],
-            outfile: MESH_OUTFILE,
-        }));
+            // Bundle mesh main app
+            await build(Object.assign({}, rec, {
+                entryPoints: [ 'src/main/mesh.js' ],
+                outfile: MESH_OUTFILE,
+            }));
 
-        appendExtraModules(MESH_EXTRAS, MESH_OUTFILE, isProd);
+            appendExtraModules(MESH_EXTRAS, MESH_OUTFILE, isProd);
 
-        // Bundle mesh worker
-        await build(Object.assign({}, rec, {
-            entryPoints: [ 'src/mesh/work.js' ],
-            outfile: 'src/pack/mesh-work.js',
-        }));
+            // Bundle mesh worker
+            await build(Object.assign({}, rec, {
+                entryPoints: [ 'src/mesh/work.js' ],
+                outfile: 'src/pack/mesh-work.js',
+            }));
+        }
 
         // Bundle kiri main app
         await build(Object.assign({}, rec, {
