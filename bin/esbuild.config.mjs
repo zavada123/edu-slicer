@@ -104,7 +104,7 @@ const rec = {
 async function buildApp() {
     try {
         // Concatenate kiri devices
-        generateDevices();
+        await generateDevices();
 
         if (!kiriOnly) {
             // Bundle void main app

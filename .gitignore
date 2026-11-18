@@ -7,7 +7,7 @@
 alt
 app.json
 build
-data
+/data
 dist
 logs
 mod
